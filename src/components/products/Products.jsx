@@ -11,13 +11,13 @@ function Products () {
     function fetchItems () {
       if (localStorage.getItem('items') === null) {
         axios
-          .get('https://fakestoreapi.com/products/')
+          .get("https://fakestoreapi.com/products/")
           .then(response => response.data)
           .then(response =>
             localStorage.setItem('items', JSON.stringify(response))
           )
           .then(() => setItemList(JSON.parse(localStorage.getItem('items'))))
-          .catch(() => alert('API DOWN!'))
+          // .catch(() => alert('API DOWN!'))
       } else {
         setItemList(JSON.parse(localStorage.getItem('items')))
       }

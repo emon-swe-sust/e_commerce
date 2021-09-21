@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useEffect } from 'react/cjs/react.development'
+// import { useEffect } from 'react/cjs/react.development'
 import { shoppingListContext } from '../context/ShoppingContext'
 import Dollar from '../icons/Dollar'
 import ItemDownArrow from '../icons/ItemDownArrow'
@@ -29,14 +29,18 @@ function ItemCards ({
     ChangeSelectedItemsCount(idx, changedItemCount, itemList, selectedItems, setSelectedItems)
   }
 
-  useEffect(()=>{
-    let tempItem = selectedItems.filter(({id}) => id === idx)
-    if(tempItem.length > 0){
-      setItemCount(tempItem[0].count)
-    } else {
-      setItemCount(0)
-    }
-  },[selectedItems, idx])
+  // useEffect(()=>{
+  //   const 
+  //   if(selectedItems.length > 0){
+  //     let tempItem = selectedItems.filter(({id}) => id === idx)
+  //     if(tempItem.length > 0){
+  //       setItemCount(tempItem[0].count)
+  //     } else {
+  //       setItemCount(0)
+  //     }
+  //   }
+   
+  // },[selectedItems, idx])
 
   return (
     <div
@@ -112,7 +116,11 @@ function ItemCards ({
               <button onClick={() => funcChangeItemCount(itemCount+1)}>
                 <ItemUpArrow />
               </button>
-              <div className='flex'>{itemCount}</div>
+              <div className='flex'>
+              {
+                selectedItems.filter(({id}) => id===idx)[0].count
+              }
+              </div>
               <button
                 onClick={() => funcChangeItemCount(itemCount > 0 ? itemCount - 1 : 0)}
               >
