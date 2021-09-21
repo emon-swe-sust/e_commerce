@@ -9,35 +9,39 @@ import Text from '../icons/Text'
 
 function ItemCards ({
   title,
-  id:idx,
+  id: idx,
   price,
   description,
   category,
   image,
   rating
 }) {
-  const { itemList, selectedItems, setSelectedItems } = useContext(shoppingListContext)
+  const { itemList, selectedItems, setSelectedItems } = useContext(
+    shoppingListContext
+  )
   const [seeMoreDesc, setSeeMoreDesc] = useState(true)
   const [itemCount, setItemCount] = useState(0)
 
-  useEffect(()=>{
-      let currentItem = itemList.filter(({id})=>id===idx)
+  useEffect(() => {
+    const updateSelectedItems = () => {
+      let currentItem = itemList.filter(({ id }) => id === idx)
       currentItem = currentItem[0]
-      currentItem = {...currentItem, 'count':itemCount}
-      console.log(currentItem)
-      if(itemCount === 0){
-          setSelectedItems(selectedItems.filter(({id})=>id!==idx))
+      currentItem = { ...currentItem, count: itemCount }
+      if (itemCount === 0) {
+        setSelectedItems(selectedItems.filter(({ id }) => id !== idx))
+      } else if (itemCount === 1) {
+        setSelectedItems([...selectedItems, currentItem])
+      } else {
+        setSelectedItems(
+          selectedItems.map(item => {
+            if (item.id === idx) return currentItem
+            else return item
+          })
+        )
       }
-      else if(itemCount === 1){
-          setSelectedItems([...selectedItems, currentItem])
-      }
-      else{
-          setSelectedItems(selectedItems.map((item) => {
-              if(item.id === idx) return currentItem
-              else return item
-          }))
-      }
-  },[itemCount])
+    }
+    updateSelectedItems()
+  }, [itemCount, idx, itemList, setSelectedItems])
 
   return (
     <div
@@ -46,7 +50,7 @@ function ItemCards ({
         transition flex flex-col justify-between'
     >
       <img
-        src={image}
+        src={image} alt="one of our product"
         className='w-full rounded-md shadow-xl h-96 border-2 border-blue-200 hover:border-blue-500'
       />
       <div className='mt-2 uppercase'>{category}</div>
