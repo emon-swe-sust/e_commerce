@@ -11,7 +11,7 @@ function Products () {
     function fetchItems () {
       if (localStorage.getItem('items') === null) {
         axios
-          .get('https://fakestoreapi.com/products')
+          .get('https://fakestoreapi.com/products/')
           .then(response => response.data)
           .then(response =>
             localStorage.setItem('items', JSON.stringify(response))

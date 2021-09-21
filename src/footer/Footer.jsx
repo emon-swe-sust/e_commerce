@@ -42,15 +42,15 @@ function Footer () {
         </div>
       </div>
       <div className='flex mt-10 pb-3'>
-        <div className='m-auto'>all right is reserved by</div>
-        <HashLink
+        <div className='m-auto'>All right is reserved by DSi</div>
+        {/* <HashLink
           smooth to='/#nav'
           className='mr-5 hover:-translate-y-2 transition transform'
         >
           <button className='ml-4'>
             <UpArrow />
           </button>
-        </HashLink>
+        </HashLink> */}
       </div>
     </div>
   )

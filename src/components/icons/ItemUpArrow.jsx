@@ -5,7 +5,7 @@ function ItemUpArrow () {
     <div>
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        className='h-7 w-7 text-green-500
+        className='h-6 w-6 text-green-500
         hover:text-green-800'
         viewBox='0 0 20 20'
         fill='currentColor'

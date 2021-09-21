@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SidebarContainer from '../sidebar/SidebarContainer'
+import { Link } from 'react-router-dom'
 
 function Navbar () {
   const [navShow, setNavShow] = useState(false)
@@ -29,7 +30,7 @@ function Navbar () {
       className='text-lg md:flex text-indigo-700 
      font-semibold mt-3 md:mt-0'
     >
-      <span className='navitem'>E M S</span>
+      <span className='navitem'><Link to='/'>E M S</Link></span>
       <div className='navitem'>Popular</div>
       <div className='navitem'>Offers</div>
       <div className='navitem'>Newly Arrived</div>

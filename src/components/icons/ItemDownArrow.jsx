@@ -4,7 +4,7 @@ function ItemDownArrow () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='h-7 w-7 text-red-500
+      className='h-6 w-6 text-red-500
       hover:text-red-800'
       viewBox='0 0 20 20'
       fill='currentColor'
