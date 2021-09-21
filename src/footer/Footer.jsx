@@ -1,5 +1,4 @@
 import React from 'react'
-import { HashLink } from 'react-router-hash-link'
 import Bkash from '../components/icons/Bkash'
 import Facebook from '../components/icons/Facebook'
 import Instagram from '../components/icons/Instagram'
@@ -8,7 +7,6 @@ import Whatsapp from '../components/icons/Whatsapp'
 import Youtube from '../components/icons/Youtube'
 import MasterCard from '../components/icons/MasterCard'
 import VisaCard from '../components/icons/VisaCard'
-import UpArrow from '../components/icons/UpArrow'
 
 function Footer () {
   return (
@@ -43,14 +41,6 @@ function Footer () {
       </div>
       <div className='flex mt-10 pb-3'>
         <div className='m-auto'>All right is reserved by DSi</div>
-        {/* <HashLink
-          smooth to='/#nav'
-          className='mr-5 hover:-translate-y-2 transition transform'
-        >
-          <button className='ml-4'>
-            <UpArrow />
-          </button>
-        </HashLink> */}
       </div>
     </div>
   )
