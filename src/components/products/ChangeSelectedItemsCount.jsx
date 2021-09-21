@@ -6,6 +6,7 @@ const ChangeSelectedItems = (
   setSelectedItems
 ) => {
   let currentItem = selectedItems.filter(({ id }) => id === idx)
+  
   if (currentItem.length > 0) {
     if (changedItemCount < 1) {
       setSelectedItems(selectedItems.filter(({ id }) => id !== idx))

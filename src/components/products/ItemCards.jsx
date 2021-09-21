@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 // import { useEffect } from 'react/cjs/react.development'
 import { shoppingListContext } from '../context/ShoppingContext'
 import Dollar from '../icons/Dollar'
@@ -11,7 +11,7 @@ import ChangeSelectedItemsCount from './ChangeSelectedItemsCount'
 
 function ItemCards ({
   title,
-  id:idx,
+  id: idx,
   price,
   description,
   category,
@@ -24,23 +24,25 @@ function ItemCards ({
   const [seeMoreDesc, setSeeMoreDesc] = useState(true)
   const [itemCount, setItemCount] = useState(0)
 
-  const funcChangeItemCount = (changedItemCount) => {
+  const funcChangeItemCount = changedItemCount => {
     setItemCount(changedItemCount)
-    ChangeSelectedItemsCount(idx, changedItemCount, itemList, selectedItems, setSelectedItems)
+    ChangeSelectedItemsCount(
+      idx,
+      changedItemCount,
+      itemList,
+      selectedItems,
+      setSelectedItems
+    )
   }
 
-  // useEffect(()=>{
-  //   const 
-  //   if(selectedItems.length > 0){
-  //     let tempItem = selectedItems.filter(({id}) => id === idx)
-  //     if(tempItem.length > 0){
-  //       setItemCount(tempItem[0].count)
-  //     } else {
-  //       setItemCount(0)
-  //     }
-  //   }
-   
-  // },[selectedItems, idx])
+  useEffect(()=>{
+      let tempItem = selectedItems.filter(({id}) => id === idx)
+      if(tempItem.length > 0){
+        setItemCount(tempItem[0].count)
+      } else {
+        setItemCount(0)
+      }
+  },[selectedItems, idx])
 
   return (
     <div
@@ -49,7 +51,8 @@ function ItemCards ({
         transition flex flex-col justify-between'
     >
       <img
-        src={image} alt="one of our product"
+        src={image}
+        alt='one of our product'
         className='w-full rounded-md shadow-xl h-96 border-2 border-blue-200 hover:border-blue-500'
       />
       <div className='mt-2 uppercase'>{category}</div>
@@ -103,7 +106,7 @@ function ItemCards ({
           <button
             className=' p-2 text-white rounded-md w-full bg-indigo-500
             shadow-md hover:shadow-2xl hover:bg-indigo-700'
-            onClick={() => funcChangeItemCount(itemCount+1)}
+            onClick={() => funcChangeItemCount(itemCount + 1)}
           >
             Add to cart
           </button>
@@ -113,16 +116,16 @@ function ItemCards ({
           border-blue-200 hover:border-blue-600 flex'
           >
             <div className='m-auto flex space-x-4'>
-              <button onClick={() => funcChangeItemCount(itemCount+1)}>
+              <button onClick={() => funcChangeItemCount(itemCount + 1)}>
                 <ItemUpArrow />
               </button>
               <div className='flex'>
-              {
-                selectedItems.filter(({id}) => id===idx)[0].count
-              }
+                {itemCount}
               </div>
               <button
-                onClick={() => funcChangeItemCount(itemCount > 0 ? itemCount - 1 : 0)}
+                onClick={() =>
+                  funcChangeItemCount(itemCount > 0 ? itemCount - 1 : 0)
+                }
               >
                 <ItemDownArrow />
               </button>

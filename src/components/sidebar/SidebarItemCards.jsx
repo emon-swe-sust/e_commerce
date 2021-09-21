@@ -87,7 +87,7 @@ function SidebarItemCards ({
             </div>
             <div className='text-gray-500'>Qty {count}</div>
             <div className='text-gray-500'>
-              <button onClick={()=> funcChangeItemCount(count > 1 ? count-1 : 0, 'DOWN')}>
+              <button onClick={()=> funcChangeItemCount(count > 0 ? count-1 : 0, 'DOWN')}>
                 <ItemDownArrow />
               </button>
             </div>
