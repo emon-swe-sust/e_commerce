@@ -5,25 +5,20 @@ import Navbar from '../navbar/Navbar'
 import { shoppingListContext } from './../context/ShoppingContext'
 import CheckoutItems from './CheckoutItems'
 
-function Checkout () {
+function Checkout() {
   const history = useHistory()
-  const { selectedItems, setSelectedItems } = useContext(shoppingListContext)
-  let totalPrice = 0
-  let length = selectedItems.length
-  for (let i = 0; i < length; i++)
-    totalPrice += selectedItems[i].count * selectedItems[i].price
+  const { selectedItems, setSelectedItems, totalPrice } = useContext(shoppingListContext)
+
   const confirmCheckout = () => {
     setSelectedItems([])
-    history.push('/')
+    history.push('/confirm/')
   }
+
+  if(selectedItems.length < 1) history.push('/')
 
   return (
     <div>
       <Navbar />
-      {/* {
-        selectedItems.length === 0 && history.push('/')
-        
-      } */}
       <div className='bg-gradient-to-r from-indigo-100 to-green-100 mt-12'>
         <div
           className='my-3 flex bg-indigo-500 text-white
@@ -117,7 +112,7 @@ function Checkout () {
                 Card Number
               </label>
               <input
-                type='text'
+                type='number'
                 placeholder='Address'
                 className='shadow-xl appearance-none border-2 rounded w-full py-2
             px-3 text-gray-700 leading-tight focus:outline-none border-blue-200
@@ -131,7 +126,7 @@ function Checkout () {
                 Contact No
               </label>
               <input
-                type='text'
+                type='number'
                 placeholder='Contact Number'
                 className='shadow-xl appearance-none border-2 rounded w-full py-2
             px-3 text-gray-700 leading-tight focus:outline-none border-blue-200

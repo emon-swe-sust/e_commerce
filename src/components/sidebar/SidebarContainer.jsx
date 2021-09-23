@@ -6,17 +6,17 @@ import SidebarItemCards from './SidebarItemCards'
 import { Link } from 'react-router-dom'
 
 export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
-  const { selectedItems } = useContext(shoppingListContext)
-  const [totalPrice, setTotalPrice] = useState(0)
+  const { selectedItems, totalPrice, setTotalPrice } = useContext(shoppingListContext)
+  // const [totalPrice, setTotalPrice] = useState(0)
 
-  useEffect(() => {
-    let tempPrice = 0
-    let length = selectedItems.length
-    for (let i = 0; i < length; i++) {
-      tempPrice += selectedItems[i].count * selectedItems[i].price
-    }
-    setTotalPrice(tempPrice)
-  }, [selectedItems])
+  // useEffect(() => {
+  //   let tempPrice = 0
+  //   let length = selectedItems.length
+  //   for (let i = 0; i < length; i++) {
+  //     tempPrice += selectedItems[i].count * selectedItems[i].price
+  //   }
+  //   setTotalPrice(tempPrice)
+  // }, [selectedItems])
 
   return (
     <Transition.Root show={isSidebarOpen} as={Fragment}>
@@ -78,8 +78,6 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                             selectedItem => (
                               <SidebarItemCards
                                 key={selectedItem.id}
-                                totalPrice={totalPrice}
-                                setTotalPrice={setTotalPrice}
                                 selectedItem={selectedItem}
                               />
                             )

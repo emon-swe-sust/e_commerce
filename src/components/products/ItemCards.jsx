@@ -1,38 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { shoppingListContext } from '../context/ShoppingContext'
 import DollarIcon from '../icons/DollarIcon'
 import ItemDownArrowIcon from '../icons/ItemDownArrowIcon'
 import ItemUpArrow from '../icons/ItemUpArrowIcon'
 import People from '../icons/PeopleIcon'
 import StarIcon from '../icons/StarIcon'
-import ChangeSelectedItemsCount from './ChangeSelectedItemsCount'
+import useChangeSelectedItems from './useChangeSelectedItemsCount'
 
-function ItemCards ({item}) {
-  const {  selectedItems, setSelectedItems } = useContext(
+function ItemCards({ item }) {
+  const { selectedItems, setSelectedItems } = useContext(
     shoppingListContext
   )
-  const [itemCount, setItemCount] = useState(0)
 
-  const funcChangeItemCount = changedItemCount => {
+  const itemCount = selectedItems.filter(({ id }) => id === item.id)[0] ? 
+  selectedItems.filter(({ id }) => id === item.id)[0].count : 0
 
-    setItemCount(changedItemCount)
-    ChangeSelectedItemsCount(
-      item.id,
-      changedItemCount,
-      
-      selectedItems,
-      setSelectedItems
-    )
-  }
-
-  useEffect(() => {
-    let tempItem = selectedItems.filter(({ id }) => id === item.id)
-    if (tempItem.length > 0) {
-      setItemCount(tempItem[0].count)
-    } else {
-      setItemCount(0)
-    }
-  }, [selectedItems, item.id])
+  const changeSelectedItemsCount = useChangeSelectedItems(item.id)
 
   return (
     <div
@@ -43,14 +26,14 @@ function ItemCards ({item}) {
       <div className="overflow-hidden w-full rounded-md shadow-xl
       border-2 border-indigo-100 hover:border-indigo-300">
 
-      
-      <img
-        src={item.image}
-        alt='one of our product'
-        className='rounded-md shadow-xl h-80
+
+        <img
+          src={item.image}
+          alt='one of our product'
+          className='rounded-md shadow-xl h-80
          transform
          hover:h-72 hover:scale-110 transition-all w-96 md:w-80 xl:w-72'
-      />
+        />
       </div>
       <div className='mt-2 uppercase'>{item.category}</div>
       <hr />
@@ -76,7 +59,7 @@ function ItemCards ({item}) {
           <button
             className=' p-2 text-white rounded-md w-full bg-indigo-500
             shadow-md hover:shadow-2xl hover:bg-indigo-700'
-            onClick={() => funcChangeItemCount(itemCount + 1)}
+            onClick={() => changeSelectedItemsCount(itemCount + 1)}
           >
             Add to cart
           </button>
@@ -88,13 +71,13 @@ function ItemCards ({item}) {
             <div className='m-auto flex space-x-4'>
               <button
                 onClick={() =>
-                  funcChangeItemCount(itemCount > 0 ? itemCount - 1 : 0)
+                  changeSelectedItemsCount(itemCount > 0 ? itemCount - 1 : 0)
                 }
               >
                 <ItemDownArrowIcon />
               </button>
               <div className='flex'>{itemCount}</div>
-              <button onClick={() => funcChangeItemCount(itemCount + 1)}>
+              <button onClick={() => changeSelectedItemsCount(itemCount + 1)}>
                 <ItemUpArrow />
               </button>
             </div>

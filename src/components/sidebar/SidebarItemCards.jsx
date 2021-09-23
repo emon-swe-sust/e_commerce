@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { shoppingListContext } from '../context/ShoppingContext'
 import Delete from '../icons/DeleteIcon'
 import DollarIcon from '../icons/DollarIcon'
@@ -6,17 +6,15 @@ import ItemDownArrowIcon from '../icons/ItemDownArrowIcon'
 import ItemUpArrowIcon from '../icons/ItemUpArrowIcon'
 import PeopleIcon from '../icons/PeopleIcon'
 import StarIcon from '../icons/StarIcon'
-import ChangeSelectedItemsCount from './../products/ChangeSelectedItemsCount'
+import useChangeSelectedItemsCount from '../products/useChangeSelectedItemsCount'
 
 function SidebarItemCards ({
-  totalPrice,
-  setTotalPrice,
   selectedItem
 }) {
-  const {  selectedItems, setSelectedItems } = useContext(
-    shoppingListContext
-  )
-  const funcChangeItemCount = (changedItemCount, type) => {
+  const changeSelectedItemsCount = useChangeSelectedItemsCount(selectedItem.id)
+  const {totalPrice, setTotalPrice} = useContext(shoppingListContext)
+
+  const funcChangeItemCount = (type) => {
     if (type === 'UP') {
       setTotalPrice(totalPrice + selectedItem.price)
     } else if (type === 'DOWN') {
@@ -24,13 +22,6 @@ function SidebarItemCards ({
     } else {
       setTotalPrice(totalPrice - selectedItem.price * selectedItem.count)
     }
-
-    ChangeSelectedItemsCount(
-      selectedItem.id,
-      changedItemCount,
-      selectedItems,
-      setSelectedItems
-    )
   }
 
   return (
@@ -72,8 +63,7 @@ function SidebarItemCards ({
           <div className='flex space-x-1'>
             <div className='text-gray-500'>
               <button
-                onClick={() =>
-                  funcChangeItemCount(selectedItem.count > 0 ? selectedItem.count - 1 : 0, 'DOWN')
+                onClick={()=>changeSelectedItemsCount(selectedItem.count > 0 ? selectedItem.count - 1 : 0)
                 }
               >
                 <ItemDownArrowIcon />
@@ -81,7 +71,7 @@ function SidebarItemCards ({
             </div>
             <div className='text-gray-500'>Quantity {selectedItem.count}</div>
             <div className='text-gray-500'>
-              <button onClick={() => funcChangeItemCount(selectedItem.count + 1, 'UP')}>
+              <button onClick={() => changeSelectedItemsCount(selectedItem.count + 1)}>
                 <ItemUpArrowIcon />
               </button>
             </div>
@@ -90,7 +80,7 @@ function SidebarItemCards ({
             <button
               type='button'
               className='font-medium text-red-600 hover:text-white hover:bg-red-500 rounded-md p-1'
-              onClick={() => funcChangeItemCount(0, 'DELETE')}
+              onClick={() => changeSelectedItemsCount(0)}
             >
               <div className='flex'>
                 <Delete />
