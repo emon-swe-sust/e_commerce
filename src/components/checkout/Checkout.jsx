@@ -24,7 +24,7 @@ function Checkout() {
           className='my-3 flex bg-indigo-500 text-white
     shadow-xl'
         >
-          <div className='m-auto font-bold text-4xl py-5'>
+          <div className='m-auto font-bold text-4xl p-5 mt-4'>
             Shipment Information
           </div>
         </div>

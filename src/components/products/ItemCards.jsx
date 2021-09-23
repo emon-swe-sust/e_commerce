@@ -8,9 +8,7 @@ import StarIcon from '../icons/StarIcon'
 import useChangeSelectedItems from './useChangeSelectedItemsCount'
 
 function ItemCards({ item }) {
-  const { selectedItems, setSelectedItems } = useContext(
-    shoppingListContext
-  )
+  const { selectedItems } = useContext(shoppingListContext)
 
   const itemCount = selectedItems.filter(({ id }) => id === item.id)[0] ? 
   selectedItems.filter(({ id }) => id === item.id)[0].count : 0

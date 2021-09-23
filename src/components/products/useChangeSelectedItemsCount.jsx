@@ -8,8 +8,7 @@ function useChangeSelectedItems(idx) {
   const changeSelectedItemsCount = (changedItemCount) => {
     let currentItem = selectedItems.filter(({ id }) => id === idx)
     if (currentItem.length > 0) {
-
-       // Getting the total price 
+      // Setting the total price 
       setTotalPrice(selectedItems.map(({ count, price, id }) => {
         if (id === idx) return price * changedItemCount
         else return price * count
@@ -31,13 +30,11 @@ function useChangeSelectedItems(idx) {
       currentItem = itemList.filter(({ id }) => id === idx)
       currentItem = currentItem[0]
       currentItem = { ...currentItem, count: changedItemCount }
-       // Getting the total price 
+      // Setting the total price 
       setTotalPrice(totalPrice + currentItem.price)
       setSelectedItems([...selectedItems, currentItem])
     }
   }
-
   return changeSelectedItemsCount;
 }
-
 export default useChangeSelectedItems

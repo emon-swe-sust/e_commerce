@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { shoppingListContext } from '../context/ShoppingContext'
+import React from 'react'
 import Delete from '../icons/DeleteIcon'
 import DollarIcon from '../icons/DollarIcon'
 import ItemDownArrowIcon from '../icons/ItemDownArrowIcon'
@@ -12,17 +11,6 @@ function SidebarItemCards ({
   selectedItem
 }) {
   const changeSelectedItemsCount = useChangeSelectedItemsCount(selectedItem.id)
-  const {totalPrice, setTotalPrice} = useContext(shoppingListContext)
-
-  const funcChangeItemCount = (type) => {
-    if (type === 'UP') {
-      setTotalPrice(totalPrice + selectedItem.price)
-    } else if (type === 'DOWN') {
-      setTotalPrice(totalPrice - selectedItem.price)
-    } else {
-      setTotalPrice(totalPrice - selectedItem.price * selectedItem.count)
-    }
-  }
 
   return (
     <li className='py-6 flex'>

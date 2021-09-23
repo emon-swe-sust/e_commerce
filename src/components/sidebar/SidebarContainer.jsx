@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { shoppingListContext } from '../context/ShoppingContext'
@@ -6,17 +6,7 @@ import SidebarItemCards from './SidebarItemCards'
 import { Link } from 'react-router-dom'
 
 export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
-  const { selectedItems, totalPrice, setTotalPrice } = useContext(shoppingListContext)
-  // const [totalPrice, setTotalPrice] = useState(0)
-
-  // useEffect(() => {
-  //   let tempPrice = 0
-  //   let length = selectedItems.length
-  //   for (let i = 0; i < length; i++) {
-  //     tempPrice += selectedItems[i].count * selectedItems[i].price
-  //   }
-  //   setTotalPrice(tempPrice)
-  // }, [selectedItems])
+  const { selectedItems, totalPrice, setSelectedItems, setTotalPrice } = useContext(shoppingListContext)
 
   return (
     <Transition.Root show={isSidebarOpen} as={Fragment}>
@@ -96,9 +86,9 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                       Shipping and taxes calculated at checkout.
                     </p>
                     {selectedItems.length > 0 && (
-                      <div className='mt-6'>
+                      <div className='mt-6 flex'>
                         <button
-                          className='w-full'
+                          className='w-full px-3'
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           <Link
@@ -109,6 +99,23 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                           >
                             Checkout
                           </Link>
+                        </button>
+                        <button
+                          className='w-full px-3'
+                          onClick={() => {
+                            setSelectedItems([])
+                            setTotalPrice(0)
+                          }
+                          }
+                        >
+                          <div
+                            to='/checkout/'
+                            className='flex justify-center items-center px-6 py-3 border
+                         border-transparent rounded-md shadow-sm text-base font-medium text-white
+                        bg-red-500 hover:bg-red-700 hover:-translate-y-1 transform transition'
+                          >
+                            Clear Cart
+                          </div>
                         </button>
                       </div>
                     )}
@@ -124,6 +131,7 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                           <span aria-hidden='true'> &larr; &nbsp;</span>
                           Continue Shopping
                         </button>
+                        
                       </p>
                     </div>
                   </div>
