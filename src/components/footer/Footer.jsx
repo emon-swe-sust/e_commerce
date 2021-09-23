@@ -1,12 +1,12 @@
 import React from 'react'
-import Bkash from '../components/icons/Bkash'
-import Facebook from '../components/icons/Facebook'
-import Instagram from '../components/icons/Instagram'
-import Twitter from '../components/icons/Twitter'
-import Whatsapp from '../components/icons/Whatsapp'
-import Youtube from '../components/icons/Youtube'
-import MasterCard from '../components/icons/MasterCard'
-import VisaCard from '../components/icons/VisaCard'
+import Bkash from '../icons/Bkash'
+import Facebook from '../icons/Facebook'
+import Instagram from '../icons/Instagram'
+import Twitter from '../icons/Twitter'
+import Whatsapp from '../icons/Whatsapp'
+import Youtube from '../icons/Youtube'
+import MasterCard from '../icons/MasterCard'
+import VisaCard from '../icons/VisaCard'
 
 function Footer () {
   return (

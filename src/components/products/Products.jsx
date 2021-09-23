@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
 import { shoppingListContext } from '../context/ShoppingContext'
 import ProductSearch from './ProductSearch'
+import HashLinkUp from '../footer/HashLinkUp'
 
 function Products () {
   const { itemList, setItemList } = useContext(shoppingListContext)
@@ -97,7 +98,7 @@ function Products () {
       </div>
       
       <ProductSearch itemList={itemList} searchedCategory={searchedCategory} searchedItems={searchedItems }/>
-
+      <HashLinkUp />
     </div>
   )
 }

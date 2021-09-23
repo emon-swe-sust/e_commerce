@@ -1,5 +1,5 @@
 import React from 'react'
-import UpArrow from '../components/icons/UpArrow'
+import UpArrow from './../icons/UpArrow'
 import { HashLink } from 'react-router-hash-link'
 
 function HashLinkUp () {
