@@ -1,5 +1,5 @@
 import React from 'react'
-import Dollar from '../icons/Dollar'
+import DollarIcon from '../icons/DollarIcon'
 
 function CheckoutItems ({ image, title, price, count }) {
   return (
@@ -21,7 +21,7 @@ function CheckoutItems ({ image, title, price, count }) {
 
         <div className='ml-auto'>
           <div className='flex'>
-            <Dollar />
+            <DollarIcon />
             {price}
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VisaCard () {
+function VisaCardIcon () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -19,4 +19,4 @@ function VisaCard () {
   )
 }
 
-export default VisaCard
+export default VisaCardIcon

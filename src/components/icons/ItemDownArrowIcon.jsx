@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ItemDownArrow () {
+function ItemDownArrowIcon () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -18,4 +18,4 @@ function ItemDownArrow () {
   )
 }
 
-export default ItemDownArrow
+export default ItemDownArrowIcon

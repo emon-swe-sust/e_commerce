@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Facebook () {
+function FacebookIcon () {
   return (
     <div>
       <svg
@@ -21,4 +21,4 @@ function Facebook () {
   )
 }
 
-export default Facebook
+export default FacebookIcon

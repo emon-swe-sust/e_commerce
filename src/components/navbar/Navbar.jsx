@@ -40,9 +40,8 @@ function Navbar () {
 
   return (
     <nav
-    id='nav'
       className='w-full justify-between items-center flex-wrap
-      px-6 py-2 shadow-2xl bg-gradient-to-r from-indigo-200 to-green-200'
+      px-6 py-2 bg-gradient-to-r from-indigo-200 to-green-200 fixed top-0'
     >
       <div className='flex md:hidden w-full'>
         <button

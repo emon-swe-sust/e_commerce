@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ItemUpArrow () {
+function ItemUpArrowIcon () {
   return (
     <div>
       <svg
@@ -20,4 +20,4 @@ function ItemUpArrow () {
   )
 }
 
-export default ItemUpArrow
+export default ItemUpArrowIcon

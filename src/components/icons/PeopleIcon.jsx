@@ -1,6 +1,6 @@
 import React from 'react'
 
-function People () {
+function PeopleIcon () {
   return (
     <div>
       <svg
@@ -19,4 +19,4 @@ function People () {
   )
 }
 
-export default People
+export default PeopleIcon

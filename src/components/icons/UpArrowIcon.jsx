@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UpArrow () {
+function UpArrowIcon () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -17,4 +17,4 @@ function UpArrow () {
   )
 }
 
-export default UpArrow
+export default UpArrowIcon

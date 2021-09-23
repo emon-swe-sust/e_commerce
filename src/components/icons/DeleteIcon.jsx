@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Delete () {
+function DeleteIcon () {
   return (
     <div>
       <svg
@@ -19,4 +19,4 @@ function Delete () {
   )
 }
 
-export default Delete
+export default DeleteIcon

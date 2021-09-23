@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Bkash () {
+function BkashIcon () {
   return (
     <svg
       className='bg-white rounded-md mt-3 h-8 sm:h-10 w-8 sm:w-14 transform transition hover:-translate-y-2 hover:opacity-75'
@@ -111,4 +111,4 @@ function Bkash () {
   )
 }
 
-export default Bkash
+export default BkashIcon

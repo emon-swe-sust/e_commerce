@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Twitter () {
+function TwitterIcon () {
   return (
     <svg
       className='w-7 h-7 ml-2 mt-2 hover:-translate-y-2 transition transform hover:opacity-75'
@@ -70,4 +70,4 @@ function Twitter () {
   )
 }
 
-export default Twitter
+export default TwitterIcon

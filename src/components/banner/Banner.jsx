@@ -3,6 +3,7 @@ import React from 'react'
 function Banner () {
   return (
     <div
+    id='banner'
       className='bg-cover bg-center h-auto text-white shadow-xl py-24 px-10 object-fill'
       style={{
         backgroundImage:

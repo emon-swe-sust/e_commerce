@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MasterCard () {
+function MasterCardIcon () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -20,4 +20,4 @@ function MasterCard () {
   )
 }
 
-export default MasterCard
+export default MasterCardIcon

@@ -1,12 +1,12 @@
 import React from 'react'
-import Bkash from '../icons/Bkash'
-import Facebook from '../icons/Facebook'
-import Instagram from '../icons/Instagram'
-import Twitter from '../icons/Twitter'
-import Whatsapp from '../icons/Whatsapp'
-import Youtube from '../icons/Youtube'
-import MasterCard from '../icons/MasterCard'
-import VisaCard from '../icons/VisaCard'
+import BkashIcon from '../icons/BkashIcon'
+import FacebookIcon from '../icons/FacebookIcon'
+import InstagramIcon from '../icons/InstagramIcon'
+import TwitterIcon from '../icons/TwitterIcon'
+import WhatsappIcon from '../icons/WhatsappIcon'
+import YoutubeIcon from '../icons/YoutubeIcon'
+import MasterCardIcon from '../icons/MasterCardIcon'
+import VisaCardIcon from '../icons/VisaCardIcon'
 
 function Footer () {
   return (
@@ -22,19 +22,19 @@ function Footer () {
           <div className='pr-10 pl-5'>
             <div className='mb-3'>PAYMENT METHODS</div>
             <div className='flex flex-wrap'>
-              <Bkash />
-              <MasterCard />
-              <VisaCard />
+              <BkashIcon />
+              <MasterCardIcon />
+              <VisaCardIcon />
             </div>
           </div>
           <div className='pl-10 pr-5'>
             <div className='mb-3'>CONNECT WITH US</div>
             <div className='flex flex-wrap'>
-              <Facebook />
-              <Whatsapp />
-              <Instagram />
-              <Twitter />
-              <Youtube />
+              <FacebookIcon />
+              <WhatsappIcon />
+              <InstagramIcon />
+              <TwitterIcon />
+              <YoutubeIcon />
             </div>
           </div>
         </div>

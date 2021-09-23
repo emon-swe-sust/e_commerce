@@ -15,7 +15,6 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
     for (let i = 0; i < length; i++) {
       tempPrice += selectedItems[i].count * selectedItems[i].price
     }
-
     setTotalPrice(tempPrice)
   }, [selectedItems])
 
@@ -76,26 +75,12 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                       <div className='flow-root'>
                         <div className='-my-6 divide-y divide-gray-200'>
                           {selectedItems.map(
-                            ({
-                              id,
-                              image,
-                              title,
-                              category,
-                              rating,
-                              price,
-                              count
-                            }) => (
+                            selectedItem => (
                               <SidebarItemCards
-                                key={id}
+                                key={selectedItem.id}
                                 totalPrice={totalPrice}
                                 setTotalPrice={setTotalPrice}
-                                id={id}
-                                image={image}
-                                title={title}
-                                category={category}
-                                rating={rating}
-                                price={price}
-                                count={count}
+                                selectedItem={selectedItem}
                               />
                             )
                           )}
@@ -112,21 +97,24 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                     <p className='mt-0.5 text-sm text-gray-500'>
                       Shipping and taxes calculated at checkout.
                     </p>
-                    <div className='mt-6'>
-                      <button
-                        className='w-full'
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        <Link
-                          to='/checkout/'
-                          className='flex justify-center items-center px-6 py-3 border
+                    {selectedItems.length > 0 && (
+                      <div className='mt-6'>
+                        <button
+                          className='w-full'
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          <Link
+                            to='/checkout/'
+                            className='flex justify-center items-center px-6 py-3 border
                          border-transparent rounded-md shadow-sm text-base font-medium text-white
                         bg-indigo-600 hover:bg-indigo-700 hover:-translate-y-1 transform transition'
-                        >
-                          Checkout
-                        </Link>
-                      </button>
-                    </div>
+                          >
+                            Checkout
+                          </Link>
+                        </button>
+                      </div>
+                    )}
+
                     <div className='mt-6 flex justify-center text-sm text-center text-gray-500'>
                       <p>
                         or{' '}
@@ -135,8 +123,8 @@ export default function Example ({ isSidebarOpen, setIsSidebarOpen }) {
                           className='text-indigo-600 font-medium hover:text-indigo-500'
                           onClick={() => setIsSidebarOpen(false)}
                         >
+                          <span aria-hidden='true'> &larr; &nbsp;</span>
                           Continue Shopping
-                          <span aria-hidden='true'> &rarr;</span>
                         </button>
                       </p>
                     </div>

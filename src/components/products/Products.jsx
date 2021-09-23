@@ -1,15 +1,18 @@
 import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
-import { shoppingListContext } from '../context/ShoppingContext'
 import ProductSearch from './ProductSearch'
 import HashLinkUp from '../footer/HashLinkUp'
+import Navbar from '../navbar/Navbar'
+import Banner from '../banner/Banner'
+import Footer from './../footer/Footer'
+import Loading from './Loading'
 
 function Products () {
-  const { itemList, setItemList } = useContext(shoppingListContext)
-  const [searchedCategory, setSearchedCategory] = useState('')
+  const [searchedCategory, setSearchedCategory] = useState('ALL PRODUCTS')
   const [searchedItems, setSearchedItems] = useState('')
+  const [isItemsLoaded, setIsItemLoaded] = useState(false)
   const categories = [
-    '',
+    'ALL PRODUCTS',
     "men's clothing",
     'jewelery',
     'electronics',
@@ -25,20 +28,19 @@ function Products () {
           .then(response =>
             localStorage.setItem('items', JSON.stringify(response))
           )
-          .then(() => setItemList(JSON.parse(localStorage.getItem('items'))))
-        // .catch(() => alert('API DOWN!'))
-      } else {
-        setItemList(JSON.parse(localStorage.getItem('items')))
-      }
+          .then(() => setIsItemLoaded(true))
+          .catch(() => alert('API DOWN!'))
+      } else setIsItemLoaded(true)
     }
     fetchItems()
-  }, [setItemList])
+  }, [])
 
   return (
-    <div>
+    <div className='mt-12'>
+      <Banner />
       <div
         className='my-3 flex bg-gradient-to-r from-indigo-300 to-green-300 text-white
-    shadow-xl'
+    shadow-xl w-full'
       >
         <div className='m-auto font-bold text-4xl py-5'>Our Products</div>
       </div>
@@ -48,12 +50,12 @@ function Products () {
             htmlFor='search category'
             className='text-lg text-gray-600 font-bold'
           >
-            Search Category
+            Select Category
           </label>
           <div className='relative w-full'>
             <select
-              className='block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-2
-              px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+              className='block appearance-none w-full bg-white border border-indigo-200 hover:border-indigo-500 text-gray-700 py-2
+              px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white'
               name='category'
               onChange={e => setSearchedCategory(e.target.value)}
               value={searchedCategory}
@@ -87,8 +89,8 @@ function Products () {
           </label>
           <div className='relative w-full'>
             <input
-              className='block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-2
-              px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+              className='block appearance-none w-full bg-white border border-indigo-200 text-gray-700 py-2
+              px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white hover:border-indigo-500 focus:border-indigo-500'
               name='Items'
               onChange={e => setSearchedItems(e.target.value)}
               value={searchedItems}
@@ -96,9 +98,19 @@ function Products () {
           </div>
         </div>
       </div>
-      
-      <ProductSearch itemList={itemList} searchedCategory={searchedCategory} searchedItems={searchedItems }/>
+      {isItemsLoaded || localStorage.getItem('items') ? (
+        <ProductSearch
+          items={JSON.parse(localStorage.getItem('items'))}
+          searchedCategory={searchedCategory}
+          searchedItems={searchedItems}
+        />
+      ) : (
+        <Loading />
+      )}
+
+      <Navbar />
       <HashLinkUp />
+      <Footer />
     </div>
   )
 }

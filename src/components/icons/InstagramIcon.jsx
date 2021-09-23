@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Instagram () {
+function InstagramIcon () {
   return (
     <svg
       enableBackground='new 0 0 24 24'
@@ -33,4 +33,4 @@ function Instagram () {
   )
 }
 
-export default Instagram
+export default InstagramIcon

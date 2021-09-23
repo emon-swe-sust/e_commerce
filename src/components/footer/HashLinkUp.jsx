@@ -1,5 +1,5 @@
 import React from 'react'
-import UpArrow from './../icons/UpArrow'
+import UpArrowIcon from '../icons/UpArrowIcon'
 import { HashLink } from 'react-router-hash-link'
 
 function HashLinkUp () {
@@ -7,11 +7,11 @@ function HashLinkUp () {
       <div className='pb-3 ml-auto flex fixed bottom-2 w-full'>
         <HashLink
           smooth
-          to='/#nav'
-          className='mr-7 text-blue-700 ml-auto hover:-translate-y-2 transition transform'
+          to='/#banner'
+          className='mr-7 text-green-500 ml-auto hover:-translate-y-2 transition transform'
         >
           <button className='ml-4'>
-            <UpArrow />
+            <UpArrowIcon />
           </button>
         </HashLink>
       </div>

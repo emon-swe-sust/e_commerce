@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Dollar () {
+function DollarIcon () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -18,4 +18,4 @@ function Dollar () {
   )
 }
 
-export default Dollar
+export default DollarIcon

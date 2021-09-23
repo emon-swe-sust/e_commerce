@@ -1,75 +1,60 @@
 import React from 'react'
 import ItemCards from './ItemCards'
-import Loading from './Loading'
+import NoItemFound from './NoItemFound'
 
-function ProductSearch ({ itemList, searchedCategory, searchedItems }) {
+function ProductSearch ({ items, searchedCategory, searchedItems }) {
   return (
     <div>
-      {itemList.length > 0 ? (
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 px-0 sm:px-20 md:px-20 xl:px-60'>
-          {searchedCategory.length > 0
-            ? itemList
+      {searchedCategory === 'ALL PRODUCTS' ? (
+        <div>
+          {items.filter(({ title }) =>
+            title.toUpperCase().includes(searchedItems.toUpperCase())
+          ).length < 1 && <NoItemFound />}
+        </div>
+      ) : (
+        <div>
+          {items.filter(
+            ({ category, title }) =>
+              category === searchedCategory &&
+              title.toUpperCase().includes(searchedItems.toUpperCase())
+          ).length < 1 && <NoItemFound />}
+        </div>
+      )}
+      <div className='flex'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 px-auto  m-auto'>
+          {searchedCategory === 'ALL PRODUCTS'
+            ? items
+                .filter(({ title }) =>
+                  title.toUpperCase().includes(searchedItems.toUpperCase())
+                )
+                .map(
+                  (item) => {
+                    return (
+                      <ItemCards
+                        key={item.id}
+                        item={item}
+                      ></ItemCards>
+                    )
+                  }
+                )
+            : items
                 .filter(
                   ({ category, title }) =>
                     category === searchedCategory &&
                     title.toUpperCase().includes(searchedItems.toUpperCase())
                 )
                 .map(
-                  ({
-                    title,
-                    id,
-                    price,
-                    description,
-                    category,
-                    image,
-                    rating
-                  }) => {
+                  (item) => {
                     return (
                       <ItemCards
-                        key={id}
-                        title={title}
-                        id={id}
-                        price={price}
-                        description={description}
-                        category={category}
-                        image={image}
-                        rating={rating}
-                      ></ItemCards>
-                    )
-                  }
-                )
-            : itemList
-                .filter(({ title }) =>
-                  title.toUpperCase().includes(searchedItems.toUpperCase())
-                )
-                .map(
-                  ({
-                    title,
-                    id,
-                    price,
-                    description,
-                    category,
-                    image,
-                    rating
-                  }) => {
-                    return (
-                      <ItemCards
-                        key={id}
-                        title={title}
-                        id={id}
-                        price={price}
-                        description={description}
-                        category={category}
-                        image={image}
-                        rating={rating}
+                        key={item.id}
+                        item={item}
                       ></ItemCards>
                     )
                   }
                 )}
         </div>
-      ) : (
-        <Loading />
-      )}
+      </div>
     </div>
   )
 }

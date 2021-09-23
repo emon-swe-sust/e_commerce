@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Youtube () {
+function YoutubeIcon () {
   return (
     <svg
       className='w-7 h-7 ml-2 mt-2 hover:-translate-y-2 transition transform hover:opacity-75'
@@ -19,4 +19,4 @@ function Youtube () {
   )
 }
 
-export default Youtube
+export default YoutubeIcon
